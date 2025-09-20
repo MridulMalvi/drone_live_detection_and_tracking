@@ -1,60 +1,56 @@
 # 🚁 Drone Tracking Web Application
 
-A full-stack real-time drone detection system capable of tracking multiple drone targets with 99% accuracy,
-utilizing YOLO, DeepSORT, React.js, and a FastAPI backend.
+A full-stack real-time drone detection system capable of tracking multiple drone targets with 99% accuracy, utilizing YOLO, DeepSORT, React.js, and a FastAPI backend.
 
 ## Features
 
-- **Real-time Video Feed**: Live camera stream with drone detection overlay
-- **YOLO + DeepSORT Integration**: Advanced object detection and tracking
-- **Real-time Notifications**: WebSocket-based instant alerts for new detections
-- **Interactive Dashboard**: Modern React UI with Material-UI components
-- **Detection Database**: SQLite storage for all detection records
-- **Interactive Map**: Leaflet map showing drone detection locations
-- **Statistics Tracking**: Daily detection counts and analytics
+• **Real-time Video Feed**: Live camera stream with drone detection overlay
+• **YOLO + DeepSORT Integration**: Advanced object detection and tracking
+• **Real-time Notifications**: WebSocket-based instant alerts for new detections
+• **Interactive Dashboard**: Modern React UI with Material-UI components
+• **Detection Database**: SQLite storage for all detection records
+• **Interactive Map**: Leaflet map showing drone detection locations
+• **Statistics Tracking**: Daily detection counts and analytics
 
 ## System Requirements
 
-- Python 3.8+
-- Node.js 16+
-- Camera/Webcam
-- YOLO model file (`best.pt`)
+• Python 3.8+
+• Node.js 16+
+• Camera/Webcam
+• YOLO model file (`best.pt`)
 
 ## ⚡ Important Notes
 
-- **CUDA GPU Setup:**  
+• **CUDA GPU Setup:**
   If you want to use CUDA GPU for acceleration, please run:
-
   ```bash
-    # Activate your backend virtual environment first:
-    # On Windows:
-    venv\Scripts\activate
-    # On macOS/Linux:
-    source venv/bin/activate
-    
-    # Then run:
-    pip uninstall -y torch torchvision torchaudio
-    pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-
+  # Activate your backend virtual environment first:
+  
+  # On Windows:
+  venv\Scripts\activate
+  
+  # On macOS/Linux:
+  source venv/bin/activate
+  
+  
+  # Then run:
+  pip uninstall -y torch torchvision torchaudio
+  pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
   ```
-
   Or, get the appropriate version for your system from the official [PyTorch website](https://pytorch.org/).
 
-- **Changing Camera Feed Source:**  
-To change the camera/video feed source, edit **line 304** in `backend/tracker.py` and change the parameter in `cv2.VideoCapture(#source number)` accordingly.
-
+• **Changing Camera Feed Source:**
+  To change the camera/video feed source, edit **line 304** in `backend/tracker.py` and change the parameter in `cv2.VideoCapture(#source number)` accordingly.
 
 ## Download Pre-trained Model & Dataset
 
 You can use the developer's custom-trained YOLOv8l model and the dataset:
 
-- **Custom YOLOv8l Model:**  
+• **Custom YOLOv8l Model:**
   [Download yolov8l_ep10](https://www.kaggle.com/models/nitishbiswas1/yolov8l_ep10)
 
-- **Training Dataset:**  
+• **Training Dataset:**
   [Drone Detection YOLO Dataset](https://www.kaggle.com/datasets/nitishbiswas1/drone-detection-yolo-dataset)
-
----
 
 ## Quick Start
 
@@ -79,7 +75,7 @@ pip install -r requirements.txt
 
 ### 2. Add Your YOLO Model
 
-Place your trained YOLO model file (`best.pt`) in the backend directory, or update the `MODEL_PATH` in `main.py`:
+Place your trained YOLO model file (`best.pt`) in the backend directory, or update the MODEL_PATH in main.py:
 
 ```python
 MODEL_PATH = "path/to/your/model.pt"
@@ -92,7 +88,7 @@ MODEL_PATH = "path/to/your/model.pt"
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-The backend will be available at: `http://localhost:8000`
+The backend will be available at: http://localhost:8000
 
 ### 4. Setup Frontend
 
@@ -107,11 +103,11 @@ npm install
 npm run dev
 ```
 
-The frontend will be available at: `http://localhost:3000`
+The frontend will be available at: http://localhost:3000
 
 ## Usage
 
-1. **Start the Application**: Open `http://localhost:3000` in your browser
+1. **Start the Application**: Open http://localhost:3000 in your browser
 2. **Start Camera**: Click the "Start Camera" button to begin detection
 3. **View Live Feed**: Watch the real-time video with detection overlays
 4. **Monitor Detections**: See new drone alerts and view detection statistics
@@ -121,23 +117,23 @@ The frontend will be available at: `http://localhost:3000`
 ## API Endpoints
 
 ### Camera Control
-- `POST /camera/start` - Start camera tracking
-- `POST /camera/stop` - Stop camera tracking  
-- `GET /camera/status` - Get camera status
+• `POST /camera/start` - Start camera tracking
+• `POST /camera/stop` - Stop camera tracking
+• `GET /camera/status` - Get camera status
 
 ### Detections
-- `GET /detections/today` - Get today's detections
-- `GET /detections/` - Get all detections (with pagination)
-- `GET /detections/date/{date}` - Get detections for specific date
-- `DELETE /detections/{id}` - Delete detection
+• `GET /detections/today` - Get today's detections
+• `GET /detections/` - Get all detections (with pagination)
+• `GET /detections/date/{date}` - Get detections for specific date
+• `DELETE /detections/{id}` - Delete detection
 
 ### Real-time
-- `GET /video` - Video stream endpoint
-- `WebSocket /ws` - Real-time updates
+• `GET /video` - Video stream endpoint
+• `WebSocket /ws` - Real-time updates
 
 ### System
-- `GET /health` - Health check
-- `GET /` - API documentation
+• `GET /health` - Health check
+• `GET /` - API documentation
 
 ## Project Structure
 
@@ -168,48 +164,48 @@ drone-tracking/
 ### Backend Configuration
 
 Edit `backend/main.py` to configure:
-- Model path: `MODEL_PATH = "your-model.pt"`
-- Confidence threshold: `confidence_threshold=0.5`
-- Database URL: Set `DATABASE_URL` environment variable
+• Model path: `MODEL_PATH = "your-model.pt"`
+• Confidence threshold: `confidence_threshold=0.5`
+• Database URL: Set `DATABASE_URL` environment variable
 
 ### Frontend Configuration
 
 Edit `frontend/src/utils/constants.js` to configure:
-- API base URL
-- WebSocket URL
-- Map settings
-- Notification settings
+• API base URL
+• WebSocket URL
+• Map settings
+• Notification settings
 
 ## Troubleshooting
 
 ### Common Issues
 
 **Camera not working:**
-- Check camera permissions
-- Verify camera is not in use by another application
-- Try different camera index in `tracker.py`
+• Check camera permissions
+• Verify camera is not in use by another application
+• Try different camera index in `tracker.py`
 
 **Model not found:**
-- Ensure `best.pt` file exists in backend directory
-- Check file permissions
-- Verify model format is compatible
+• Ensure `best.pt` file exists in backend directory
+• Check file permissions
+• Verify model format is compatible
 
 **Connection issues:**
-- Check if backend is running on port 8000
-- Verify frontend proxy configuration in `vite.config.js`
-- Check firewall settings
+• Check if backend is running on port 8000
+• Verify frontend proxy configuration in `vite.config.js`
+• Check firewall settings
 
 **WebSocket connection failed:**
-- Ensure both frontend and backend are running
-- Check browser console for connection errors
-- Verify WebSocket URL in constants
+• Ensure both frontend and backend are running
+• Check browser console for connection errors
+• Verify WebSocket URL in constants
 
 ### Performance Tips
 
-1. **Reduce video resolution** in `tracker.py` for better performance
-2. **Adjust confidence threshold** to reduce false positives
-3. **Limit frame rate** for lower CPU usage
-4. **Use GPU acceleration** if available with CUDA
+1. Reduce video resolution in `tracker.py` for better performance
+2. Adjust confidence threshold to reduce false positives
+3. Limit frame rate for lower CPU usage
+4. Use GPU acceleration if available with CUDA
 
 ## Development
 
@@ -247,7 +243,22 @@ gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the **Apache License 2.0**.
+
+See the [LICENSE.md](LICENSE.md) file for the complete license text.
+
+### Key Points of Apache License 2.0:
+
+- **Free to use**: You can use this software for any purpose
+- **Modify and distribute**: You can modify the code and distribute your changes
+- **Patent protection**: Contributors provide an express grant of patent rights
+- **Trademark protection**: The license does not grant trademark rights
+- **Liability disclaimer**: The software is provided "AS IS" without warranty
+- **Attribution required**: You must include the original copyright notice and license
+
+### Commercial Use
+
+This project may be used for commercial purposes under the terms of the Apache License 2.0. However, please ensure you comply with all license requirements including proper attribution.
 
 ## Contributing
 
@@ -260,14 +271,13 @@ This project is licensed under the MIT License.
 ## Support
 
 For issues and questions:
-- Check the troubleshooting section
-- Review API documentation at `http://localhost:8000/docs`
-- Create an issue on GitHub
+• Check the troubleshooting section
+• Review API documentation at http://localhost:8000/docs
+• Create an issue on GitHub
 
-**You can also contact the developer:**
-
-- **Name:** Nitish Biswas
-- **Email:** nitishbiswas066@gmail.com
+You can also contact the developer:
+• **Name**: Nitish Biswas
+• **Email**: nitishbiswas066@gmail.com
 
 ---
 
