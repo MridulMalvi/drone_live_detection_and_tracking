@@ -261,12 +261,12 @@ We're participating in **GirlScript Summer of Code (GSSoC) 2025**! Visit our [pr
 ## Support
 For issues and questions:
 • Check the troubleshooting section
-• Review API documentation at http://localhost:8000/docs
 • Create an issue on GitHub
 
 You can also contact the developer:
 • **Name**: Nitish Biswas
 • **Email**: nitishbiswas066@gmail.com
+• **Linkedin**: [nitish-biswas1](https://www.linkedin.com/in/nitish-biswas1/)
 
 ---
 **Note**: Make sure to replace `best.pt` with your actual YOLO model file trained for drone detection.
